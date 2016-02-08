@@ -13,7 +13,9 @@ public class Game implements Runnable {
 
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
-    
+
+    int x=0;
+
     public Game(String title, int width, int height){
         this.width = width;
         this.height = height;
@@ -24,14 +26,37 @@ public class Game implements Runnable {
     public void run() {
         init();
         //the game loop
-        while(isRunning){
-            update();
-            render();
+        int fps = 60;
+        double timePerUpdate = 1000000000 / fps;
+        double delta = 0;
+        long now;
+        long lastTime = System.nanoTime();
+        long timer = 0;
+        int updates = 0;
+
+        while(isRunning) {
+            now = System.nanoTime();
+            delta += (now - lastTime) / timePerUpdate;
+            timer += (now - lastTime);
+            lastTime = now;
+            if (delta >= 1) {
+                update();
+                render();
+                updates++;
+                delta--;
+            }
+            if(timer >= 1000000000){
+                System.out.println("Updates and frames: " + updates);
+                timer = 0;
+                updates = 0;
+            }
         }
+        stop();
     }
 
     private void init() {
         display = new Display(title, width, height);
+        Asset.init();
     }
 
     public synchronized void start(){
@@ -56,7 +81,7 @@ public class Game implements Runnable {
     }
 
     private void update(){
-
+        x+=1;
     }
 
     private void render(){
@@ -69,7 +94,9 @@ public class Game implements Runnable {
         //clear the screen
         graphics.clearRect(0, 0, width, height);
         //drawing begins here
-
+        graphics.drawImage(Asset.town, 0, 0, null);
+        graphics.drawImage(Asset.pokemon, 100, 20, null);
+        graphics.drawImage(Asset.player, x, 100, null);
         //drawing ends here
         bufferStrategy.show();
         graphics.dispose();

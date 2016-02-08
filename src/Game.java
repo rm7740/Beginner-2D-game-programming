@@ -107,4 +107,8 @@ public class Game implements Runnable {
         bufferStrategy.show();
         graphics.dispose();
     }
+
+    public KeyManager getKeyManager() {
+        return keyManager;
+    }
 }

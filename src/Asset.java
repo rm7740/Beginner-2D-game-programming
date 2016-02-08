@@ -7,7 +7,7 @@ public class Asset {
     private static final int playerWidth = 14, playerHeight = 16;
     private static final int pokemonWidth = 56, pokemonHeight = 56;
     private static final int townWidth = 320, townHeight = 288;
-
+    //Loads the necessary sprite sheets and crops them
     public static void init(){
         SpriteSheet playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Game Boy GBC - Pokemon Gold Silver - Gold.gif"));
         SpriteSheet pokemonSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Game Boy GBC - Pokemon Gold Silver - Pokemon Silver Version.png"));

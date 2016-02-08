@@ -9,20 +9,28 @@ public class Player extends LiveEntity{
         this.game = game;
     }
 
-    @Override
-    public void update() {
+    private void getInput(){
+        xMove = 0;
+        yMove = 0;
+
         if(game.getKeyManager().up){
-            y -= 3;
+            yMove = -speed;
         }
         if(game.getKeyManager().down){
-            y += 3;
+            yMove = speed;
         }
         if(game.getKeyManager().left){
-            x -= 3;
+            xMove = -speed;
         }
         if(game.getKeyManager().right){
-            x += 3;
+            xMove = speed;
         }
+    }
+
+    @Override
+    public void update() {
+        getInput();
+        move();
     }
 
     @Override

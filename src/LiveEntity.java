@@ -7,11 +7,19 @@ public abstract class LiveEntity extends Entity{
 
     protected int health;
     protected float speed;
+    protected float xMove, yMove;
 
     public LiveEntity(float x, float y, int width, int height) {
         super(x, y, width, height);
         health = DEFAULT_HEALTH;
         speed = DEFAULT_SPEED;
+        xMove = 0;
+        yMove = 0;
+    }
+
+    public void move(){
+        x += xMove;
+        y += yMove;
     }
 
     public int getHealth() {
@@ -28,5 +36,21 @@ public abstract class LiveEntity extends Entity{
 
     public void setSpeed(float speed) {
         this.speed = speed;
+    }
+
+    public float getxMove() {
+        return xMove;
+    }
+
+    public void setxMove(float xMove) {
+        this.xMove = xMove;
+    }
+
+    public float getyMove() {
+        return yMove;
+    }
+
+    public void setyMove(float yMove) {
+        this.yMove = yMove;
     }
 }

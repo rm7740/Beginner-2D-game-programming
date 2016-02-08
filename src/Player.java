@@ -5,7 +5,7 @@ public class Player extends LiveEntity{
     private Game game;
 
     public Player(Game game, float x, float y) {
-        super(x, y);
+        super(x, y, DEFAULT_ENTITY_WIDTH, DEFAULT_ENTITY_HEIGHT);
         this.game = game;
     }
 
@@ -27,6 +27,6 @@ public class Player extends LiveEntity{
 
     @Override
     public void render(Graphics graphics) {
-        graphics.drawImage(Asset.player, (int) x, (int) y, null);
+        graphics.drawImage(Asset.player, (int) x, (int) y, width, height,null);
     }
 }

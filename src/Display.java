@@ -15,6 +15,10 @@ public class Display {
         createDisplay();
     }
 
+    public Canvas getCanvas() {
+        return canvas;
+    }
+
     private void createDisplay() {
         frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

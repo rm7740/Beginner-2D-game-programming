@@ -14,11 +14,14 @@ public class Game implements Runnable {
     //The stateS of the game running on the thread
     private State gameState;
     private State menuState;
+    //Input variables
+    private KeyManager keyManager;
     //The constructor
     public Game(String title, int width, int height){
         this.width = width;
         this.height = height;
         this.title = title;
+        keyManager = new KeyManager();
     }
     //The job of the thread, the game loop
     @Override
@@ -55,6 +58,7 @@ public class Game implements Runnable {
     //Loads all that should be loaded and sets a state for the game
     private void init() {
         display = new Display(title, width, height);
+        display.getFrame().addKeyListener(keyManager);
         Asset.init();
         gameState = new GameState(this);
         menuState = new MenuState(this);

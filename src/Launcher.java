@@ -1,5 +1,7 @@
-/**
- * Created by Dell on 8/2/2016.
- */
+
 public class Launcher {
+    public static void main(String[] args) {
+        Game game = new Game("tITLE!", 320, 288);
+        game.start();
+    }
 }

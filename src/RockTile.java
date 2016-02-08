@@ -1,5 +1,12 @@
-/**
- * Created by Dell on 8/2/2016.
- */
-public class RockTile {
+
+public class RockTile extends Tile{
+
+    public RockTile(int id) {
+        super(Asset.rock, id);
+    }
+
+    @Override
+    public boolean isSolid() {
+        return true;
+    }
 }

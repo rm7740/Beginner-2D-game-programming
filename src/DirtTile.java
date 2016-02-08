@@ -1,5 +1,7 @@
-/**
- * Created by Dell on 8/2/2016.
- */
-public class DirtTile {
+
+public class DirtTile extends Tile{
+
+    public DirtTile(int id) {
+        super(Asset.dirt, id);
+    }
 }

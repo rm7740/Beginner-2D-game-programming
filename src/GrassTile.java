@@ -1,5 +1,7 @@
-/**
- * Created by Dell on 8/2/2016.
- */
-public class GrassTile {
+
+public class GrassTile extends Tile{
+
+    public GrassTile(int id) {
+        super(Asset.grass, id);
+    }
 }

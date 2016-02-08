@@ -1,12 +1,17 @@
-import com.sun.prism.impl.paint.PaintUtil;
+import java.awt.image.BufferStrategy;
+import java.awt.Graphics;
 
 public class Game implements Runnable {
 
     private Display display;
-    private int width, height;//I think this is unnecessary
+    private int width, height;
+    private String title;
+
     private Thread thread;
     private boolean isRunning;
-    private String title;
+
+    private BufferStrategy bufferStrategy;
+    private Graphics graphics;
 
     public Game(String title, int width, int height){
         this.width = width;
@@ -17,7 +22,7 @@ public class Game implements Runnable {
     @Override
     public void run() {
         init();
-        while(isRunning){
+        while(isRunning){//the game loop
             update();
             render();
         }
@@ -53,6 +58,11 @@ public class Game implements Runnable {
     }
 
     private void render(){
-
+        if(bufferStrategy == null){
+            display.getCanvas().createBufferStrategy(3);
+            return;
+        }
+        bufferStrategy = display.getCanvas().getBufferStrategy();
+        graphics = bufferStrategy.getDrawGraphics();
     }
 }

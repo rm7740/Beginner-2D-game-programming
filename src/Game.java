@@ -1,27 +1,26 @@
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 public class Game implements Runnable {
-
+    //Variables related to the display
     private Display display;
     private int width, height;
     private String title;
-
-    private Thread thread;
-    private boolean isRunning;
-
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
-
-    int x=0;
-
+    //Variables related to the thread that runs the game
+    private Thread thread;
+    private boolean isRunning;
+    //The stateS of the game running on the thread
+    private State gameState;
+    private State menuState;
+    //The constructor
     public Game(String title, int width, int height){
         this.width = width;
         this.height = height;
         this.title = title;
     }
-
+    //The job of the thread, the game loop
     @Override
     public void run() {
         init();
@@ -53,12 +52,15 @@ public class Game implements Runnable {
         }
         stop();
     }
-
+    //Loads all that should be loaded and sets a state for the game
     private void init() {
         display = new Display(title, width, height);
         Asset.init();
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
+        State.setCurrentState(gameState);
     }
-
+    //Starts the thread where the game runs
     public synchronized void start(){
         if(isRunning) {
             return;
@@ -67,7 +69,7 @@ public class Game implements Runnable {
         thread = new Thread(this);
         thread.start();
     }
-
+    //Stops the game by exiting the game loop
     public synchronized void stop(){
         if(!isRunning) {
             return;
@@ -79,11 +81,13 @@ public class Game implements Runnable {
             e.printStackTrace();
         }
     }
-
+    //The heart of the game
     private void update(){
-        x+=1;
+        if(State.getCurrentState() != null){
+            State.getCurrentState().update();
+        }
     }
-
+    //The graphics of the game
     private void render(){
         bufferStrategy = display.getCanvas().getBufferStrategy();
         if(bufferStrategy == null){
@@ -91,13 +95,11 @@ public class Game implements Runnable {
             return;
         }
         graphics = bufferStrategy.getDrawGraphics();
-        //clear the screen
         graphics.clearRect(0, 0, width, height);
-        //drawing begins here
-        graphics.drawImage(Asset.town, 0, 0, null);
-        graphics.drawImage(Asset.pokemon, 100, 20, null);
-        graphics.drawImage(Asset.player, x, 100, null);
-        //drawing ends here
+        //This is what actually renders
+        if(State.getCurrentState() != null){
+            State.getCurrentState().render(graphics);
+        }
         bufferStrategy.show();
         graphics.dispose();
     }

@@ -1,5 +1,10 @@
-/**
- * Created by Dell on 8/2/2016.
- */
-public class LiveEntity {
+
+public abstract class LiveEntity extends Entity{
+
+    protected int health;
+
+    public LiveEntity(float x, float y) {
+        super(x, y);
+        health = 10;
+    }
 }

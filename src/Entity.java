@@ -9,6 +9,6 @@ public abstract class Entity {
         this.y = y;
     }
 
-    public abstract update();
-    public abstract render(Graphics graphics);
+    public abstract void update();
+    public abstract void render(Graphics graphics);
 }

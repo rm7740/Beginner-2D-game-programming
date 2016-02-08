@@ -3,7 +3,7 @@ public abstract class LiveEntity extends Entity{
 
     public static final int DEFAULT_HEALTH = 10;
     public static final float DEFAULT_SPEED = 3.0f;
-    public static final int DEFAULT_ENTITY_WIDTH = 32, DEFAULT_ENTITY_HEIGHT = 32;
+    public static final int DEFAULT_ENTITY_WIDTH = 64, DEFAULT_ENTITY_HEIGHT = 64;
 
     protected int health;
     protected float speed;

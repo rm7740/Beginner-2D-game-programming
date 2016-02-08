@@ -1,5 +1,6 @@
+import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 public class Game implements Runnable {
 
@@ -12,7 +13,7 @@ public class Game implements Runnable {
 
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
-
+    
     public Game(String title, int width, int height){
         this.width = width;
         this.height = height;
@@ -22,7 +23,8 @@ public class Game implements Runnable {
     @Override
     public void run() {
         init();
-        while(isRunning){//the game loop
+        //the game loop
+        while(isRunning){
             update();
             render();
         }
@@ -58,11 +60,18 @@ public class Game implements Runnable {
     }
 
     private void render(){
+        bufferStrategy = display.getCanvas().getBufferStrategy();
         if(bufferStrategy == null){
             display.getCanvas().createBufferStrategy(3);
             return;
         }
-        bufferStrategy = display.getCanvas().getBufferStrategy();
         graphics = bufferStrategy.getDrawGraphics();
+        //clear the screen
+        graphics.clearRect(0, 0, width, height);
+        //drawing begins here
+
+        //drawing ends here
+        bufferStrategy.show();
+        graphics.dispose();
     }
 }

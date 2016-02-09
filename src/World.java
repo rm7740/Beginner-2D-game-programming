@@ -2,11 +2,13 @@ import java.awt.*;
 
 public class World {
 
+    private Game game;
     private int width, height;
     private int spawnX, spawnY;
     private int[][] worldTiles;
 
-    public World(String path){
+    public World(Game game, String path){
+        this.game = game;
         loadWorld(path);
     }
 

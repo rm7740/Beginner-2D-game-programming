@@ -2,11 +2,9 @@ import java.awt.*;
 
 public class Player extends LiveEntity{
 
-    private Game game;
 
     public Player(Game game, float x, float y) {
-        super(x, y, DEFAULT_ENTITY_WIDTH, DEFAULT_ENTITY_HEIGHT);
-        this.game = game;
+        super(game, x, y, DEFAULT_ENTITY_WIDTH, DEFAULT_ENTITY_HEIGHT);
     }
 
     private void getInput(){

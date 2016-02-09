@@ -9,12 +9,16 @@ public class Animation {
     public Animation(int speed, BufferedImage[] animationFrames) {
         this.speed = speed;
         this.animationFrames = animationFrames;
-        index = 0;
+        index = 1;
         timer = 0;
         lastTime = System.currentTimeMillis();
     }
 
     public BufferedImage getCurrentAnimationFrame(){
+        return animationFrames[index];
+    }
+
+    public BufferedImage getFixedAnimationFrame(int index) {
         return animationFrames[index];
     }
 
@@ -26,7 +30,7 @@ public class Animation {
             index++;
             timer = 0;
             if(index >= animationFrames.length){
-                index = 0;
+                index = 1;
             }
         }
     }

@@ -19,7 +19,7 @@ public class World {
     public void render(Graphics graphics){
         int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILE_WIDTH);
         int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILE_WIDTH + 1);
-        int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILE_HEIGHT);;
+        int yStart = (int) Math.max(0, handler.getGameCamera().getyOffset() / Tile.TILE_HEIGHT);
         int yEnd = (int) Math.min(height, (handler.getGameCamera().getyOffset() + handler.getHeight()) / Tile.TILE_HEIGHT + 1);
 
         for(int y = yStart; y < yEnd; y++){
@@ -31,6 +31,9 @@ public class World {
     }
 
     public Tile getTile(int x, int y){
+        if(x < 0 || y < 0 || x >= width || y >= height){
+            return Tile.grassTile;
+        }
         Tile theTile = Tile.tiles[worldTiles[x][y]];
         if(theTile == null){
             return Tile.dirtTile;

@@ -1,5 +1,7 @@
-/**
- * Created by Dell on 9/2/2016.
- */
-public class StaticEntity {
+
+public class StaticEntity extends Entity{
+
+    public StaticEntity(Handler handler, float x, float y, int width, int height) {
+        super(handler, x, y, width, height);
+    }
 }

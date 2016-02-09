@@ -10,6 +10,7 @@ public class Asset {
     public static BufferedImage grass;
     public static BufferedImage rock;
     public static BufferedImage dirt;
+    public static BufferedImage greenTree;
 
     private static final int playerSide = 64;
     private static final int grassSide = 32;
@@ -21,6 +22,8 @@ public class Asset {
         SpriteSheet grassSheet = new SpriteSheet(ImageLoader.loadImage("/textures/grass.png"));
         SpriteSheet rockSheet = new SpriteSheet(ImageLoader.loadImage("/textures/rock.png"));
         SpriteSheet dirtSheet = new SpriteSheet(ImageLoader.loadImage("/textures/dirt.png"));
+        SpriteSheet greenTreeSheet = new SpriteSheet(ImageLoader.loadImage("/textures/green trees.png"));
+
 
         playerUp = new BufferedImage[9];
         playerUp[0] = playerSheet.crop(0, 0, playerSide, playerSide);
@@ -66,5 +69,6 @@ public class Asset {
         grass = grassSheet.crop(0, grassSide * 5, grassSide, grassSide);
         rock = rockSheet.crop(0, 0, rockSide, rockSide);
         dirt = dirtSheet.crop(0, dirtSide* 5, dirtSide, dirtSide);
+        greenTree = greenTreeSheet.crop(128, 0, 96, 128);
     }
 }

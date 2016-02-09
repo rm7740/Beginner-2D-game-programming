@@ -28,12 +28,16 @@ public abstract class LiveEntity extends Entity{
             if(!collisionWithTile(temporalX,(int) (y + bounds.y) / Tile.TILE_HEIGHT) &&
                     !collisionWithTile(temporalX,(int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)){
                 x += xMove;
+            } else{//this is here to fix a problem that stems from having speed>1, so if the box tries to move 3 pixels being 2 pixels away, a collision is detected and the box will stay 2 pixels away
+                x = temporalX * Tile.TILE_WIDTH -bounds.x - bounds.width - 1;
             }
         } else if(xMove < 0){//moving left
             int temporalX = (int) (x + xMove + bounds.x) / Tile.TILE_WIDTH;
             if(!collisionWithTile(temporalX,(int) (y + bounds.y) / Tile.TILE_HEIGHT) &&
                     !collisionWithTile(temporalX,(int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)){
                 x += xMove;
+            } else{//same fix as above
+                x = temporalX * Tile.TILE_WIDTH + Tile.TILE_WIDTH -bounds.x;
             }
         }
     }
@@ -44,12 +48,16 @@ public abstract class LiveEntity extends Entity{
             if(!collisionWithTile((int) (x + bounds.x) / Tile.TILE_WIDTH, temporalY) &&
                     !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILE_WIDTH, temporalY)){
                 y += yMove;
+            } else{//same problem as moveX
+                y = temporalY * Tile.TILE_HEIGHT + Tile.TILE_HEIGHT -bounds.y;
             }
         } else if(yMove > 0){//moving down
             int temporalY = (int) (y + yMove + bounds.y + bounds.height) / Tile.TILE_HEIGHT;
             if(!collisionWithTile((int) (x + bounds.x) / Tile.TILE_WIDTH, temporalY) &&
                     !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILE_WIDTH, temporalY)) {
                 y += yMove;
+            } else{//same fix as above
+                y = temporalY * Tile.TILE_HEIGHT - bounds.y - bounds.height -1;
             }
         }
     }

@@ -29,10 +29,12 @@ public class Player extends LiveEntity{
     public void update() {
         getInput();
         move();
+        game.getGameCamera().centerOnEntity(this);
     }
 
     @Override
     public void render(Graphics graphics) {
-        graphics.drawImage(Asset.player, (int) x, (int) y, width, height,null);
+        graphics.drawImage(Asset.player, (int) (x - game.getGameCamera().getxOffset()),
+                (int) (y - game.getGameCamera().getyOffset()), width, height,null);
     }
 }

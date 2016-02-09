@@ -14,6 +14,7 @@ public class GameState extends State{
     @Override
     public void update() {
         player.update();
+        game.getGameCamera().move(1, 1);
     }
 
     @Override

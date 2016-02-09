@@ -17,6 +17,26 @@ public abstract class Entity {
         bounds = new Rectangle(0, 0, width, height);
     }
 
+    public abstract void update();
+
+    public abstract void render(Graphics graphics);
+
+    public boolean checkEntityCollisions(float xOffset, float yOffset){
+        for(Entity entity: handler.getWorld().getEntityManager().getEntities()){
+            if(entity.equals(this)){
+                continue;
+            }
+            if(entity.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Rectangle getCollisionBounds(float xOffset, float yOffset){
+        return new Rectangle((int) (x + bounds.x + xOffset), (int) (y + bounds.y + yOffset), bounds.width, bounds.height);
+    }
+
     public float getX() {
         return x;
     }
@@ -48,7 +68,4 @@ public abstract class Entity {
     public void setHeight(int height) {
         this.height = height;
     }
-
-    public abstract void update();
-    public abstract void render(Graphics graphics);
 }

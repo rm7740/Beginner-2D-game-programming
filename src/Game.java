@@ -18,6 +18,8 @@ public class Game implements Runnable {
     private KeyManager keyManager;
     //Camera variables
     private GameCamera gameCamera;
+    //Handler variables
+    private Handler handler;
     //The constructor
     public Game(String title, int width, int height){
         this.width = width;
@@ -63,8 +65,9 @@ public class Game implements Runnable {
         display.getFrame().addKeyListener(keyManager);
         Asset.init();
         gameCamera = new GameCamera(this, 0, 0);
-        gameState = new GameState(this);
-        menuState = new MenuState(this);
+        handler = new Handler(this);
+        gameState = new GameState(handler);
+        menuState = new MenuState(handler);
         State.setCurrentState(gameState);
     }
     //Starts the thread where the game runs

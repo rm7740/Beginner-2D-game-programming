@@ -5,16 +5,18 @@ public class GameState extends State{
     private Player player;
     private World world;
 
-    public GameState(Game game) {
-        super(game);
-        player = new Player(game, 100, 100);
-        world = new World(game, "res/worlds/world1.txt");
+    public GameState(Handler handler) {
+        super(handler);
+        world = new World(handler, "res/worlds/world1.txt");
+        handler.setWorld(world);
+        player = new Player(handler, 100, 100);
+
     }
 
     @Override
     public void update() {
+        world.update();
         player.update();
-        game.getGameCamera().move(1, 1);
     }
 
     @Override

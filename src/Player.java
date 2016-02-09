@@ -3,24 +3,24 @@ import java.awt.*;
 public class Player extends LiveEntity{
 
 
-    public Player(Game game, float x, float y) {
-        super(game, x, y, DEFAULT_ENTITY_WIDTH, DEFAULT_ENTITY_HEIGHT);
+    public Player(Handler handler, float x, float y) {
+        super(handler, x, y, DEFAULT_ENTITY_WIDTH, DEFAULT_ENTITY_HEIGHT);
     }
 
     private void getInput(){
         xMove = 0;
         yMove = 0;
 
-        if(game.getKeyManager().up){
+        if(handler.getKeyManager().up){
             yMove = -speed;
         }
-        if(game.getKeyManager().down){
+        if(handler.getKeyManager().down){
             yMove = speed;
         }
-        if(game.getKeyManager().left){
+        if(handler.getKeyManager().left){
             xMove = -speed;
         }
-        if(game.getKeyManager().right){
+        if(handler.getKeyManager().right){
             xMove = speed;
         }
     }
@@ -29,12 +29,12 @@ public class Player extends LiveEntity{
     public void update() {
         getInput();
         move();
-        game.getGameCamera().centerOnEntity(this);
+        handler.getGameCamera().centerOnEntity(this);
     }
 
     @Override
     public void render(Graphics graphics) {
-        graphics.drawImage(Asset.player, (int) (x - game.getGameCamera().getxOffset()),
-                (int) (y - game.getGameCamera().getyOffset()), width, height,null);
+        graphics.drawImage(Asset.player, (int) (x - handler.getGameCamera().getxOffset()),
+                (int) (y - handler.getGameCamera().getyOffset()), width, height,null);
     }
 }

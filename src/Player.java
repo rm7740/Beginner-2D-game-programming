@@ -11,10 +11,10 @@ public class Player extends LiveEntity{
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, DEFAULT_ENTITY_WIDTH, DEFAULT_ENTITY_HEIGHT);
 
-        bounds.x = 20;
-        bounds.y = 30;
-        bounds.width = 24;
-        bounds.height = 24;
+        bounds.x = 22;
+        bounds.y = 33;
+        bounds.width = 20;
+        bounds.height = 28;
 
         playerUp = new Animation(100, Asset.playerUp);
         playerRight = new Animation(100, Asset.playerRight);
@@ -56,9 +56,9 @@ public class Player extends LiveEntity{
     public void render(Graphics graphics) {
         graphics.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()),
                 (int) (y - handler.getGameCamera().getyOffset()), width, height,null);
-        graphics.setColor(Color.BLUE);
-        graphics.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
-                (int) (y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
+        //graphics.setColor(Color.BLUE);
+        //graphics.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
+        //        (int) (y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
     }
 
     private BufferedImage getCurrentAnimationFrame(){

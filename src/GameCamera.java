@@ -1,18 +1,18 @@
 
 public class GameCamera {
 
-    private Game game;
+    private Handler handler;
     private float xOffset, yOffset;
 
-    public GameCamera(Game game, float xOffset, float yOffset) {
-        this.game = game;
+    public GameCamera(Handler handler, float xOffset, float yOffset) {
+        this.handler = handler;
         this.xOffset = xOffset;
         this.yOffset = yOffset;
     }
 
     public void centerOnEntity(Entity entity){
-        xOffset = entity.getX() - game.getWidth() / 2 + entity.getWidth() / 2;
-        yOffset = entity.getY() - game.getHeight() / 2 + entity.getHeight() / 2;
+        xOffset = entity.getX() - handler.getWidth() / 2 + entity.getWidth() / 2;
+        yOffset = entity.getY() - handler.getHeight() / 2 + entity.getHeight() / 2;
     }
 
     public void move(float x, float y){

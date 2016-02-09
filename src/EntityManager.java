@@ -15,7 +15,7 @@ public class EntityManager {
 
     public void update(){
         for(int i = 0; i < entities.size(); i++){
-            Entity entity = entities.get(1);
+            Entity entity = entities.get(i);
             entity.update();
         }
         player.update();

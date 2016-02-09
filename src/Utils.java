@@ -11,8 +11,8 @@ public class Utils {
             String line;
             while ((line = bufferedReader.readLine()) != null){
                 builder.append(line + "\n");
-                bufferedReader.close();
             }
+            bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

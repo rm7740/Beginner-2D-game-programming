@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Tree extends StaticEntity{
 
-    public Tree(Handler handler, float x, float y, int width, int height) {
+    public Tree(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH * 3, Tile.TILE_HEIGHT * 4);
     }
 

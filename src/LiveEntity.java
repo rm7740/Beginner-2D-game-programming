@@ -18,8 +18,44 @@ public abstract class LiveEntity extends Entity{
     }
 
     public void move(){
-        x += xMove;
-        y += yMove;
+        moveX();
+        moveY();
+    }
+
+    public void moveX(){
+        if(xMove > 0){//moving right
+            int temporalX = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILE_WIDTH;
+            if(!collisionWithTile(temporalX,(int) (y + bounds.y) / Tile.TILE_HEIGHT) &&
+                    !collisionWithTile(temporalX,(int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)){
+                x += xMove;
+            }
+        } else if(xMove < 0){//moving left
+            int temporalX = (int) (x + xMove + bounds.x) / Tile.TILE_WIDTH;
+            if(!collisionWithTile(temporalX,(int) (y + bounds.y) / Tile.TILE_HEIGHT) &&
+                    !collisionWithTile(temporalX,(int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)){
+                x += xMove;
+            }
+        }
+    }
+
+    public void moveY() {
+        if(yMove < 0){//moving up
+            int temporalY = (int) (y + yMove + bounds.y) / Tile.TILE_HEIGHT;
+            if(!collisionWithTile((int) (x + bounds.x) / Tile.TILE_WIDTH, temporalY) &&
+                    !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILE_WIDTH, temporalY)){
+                y += yMove;
+            }
+        } else if(yMove > 0){//moving down
+            int temporalY = (int) (y + yMove + bounds.y + bounds.height) / Tile.TILE_HEIGHT;
+            if(!collisionWithTile((int) (x + bounds.x) / Tile.TILE_WIDTH, temporalY) &&
+                    !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILE_WIDTH, temporalY)) {
+                y += yMove;
+            }
+        }
+    }
+
+    protected boolean collisionWithTile(int x, int y){
+        return handler.getWorld().getTile(x, y).isSolid();
     }
 
     public int getHealth() {

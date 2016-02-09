@@ -3,9 +3,10 @@ import java.awt.image.BufferedImage;
 public class Asset {
 
     public static BufferedImage[] playerUp;
-    public static BufferedImage[] playerRight;
-    public static BufferedImage[] playerDown;
     public static BufferedImage[] playerLeft;
+    public static BufferedImage[] playerDown;
+    public static BufferedImage[] playerRight;
+
     public static BufferedImage grass;
     public static BufferedImage rock;
     public static BufferedImage dirt;
@@ -31,16 +32,16 @@ public class Asset {
         playerUp[6] = playerSheet.crop(playerSide * 6, 0, playerSide, playerSide);
         playerUp[7] = playerSheet.crop(playerSide * 7, 0, playerSide, playerSide);
         playerUp[8] = playerSheet.crop(playerSide * 8, 0, playerSide, playerSide);
-        playerRight = new BufferedImage[9];
-        playerRight[0] = playerSheet.crop(0, playerSide, playerSide, playerSide);
-        playerRight[1] = playerSheet.crop(playerSide, playerSide, playerSide, playerSide);
-        playerRight[2] = playerSheet.crop(playerSide * 2, playerSide, playerSide, playerSide);
-        playerRight[3] = playerSheet.crop(playerSide * 3, playerSide, playerSide, playerSide);
-        playerRight[4] = playerSheet.crop(playerSide * 4, playerSide, playerSide, playerSide);
-        playerRight[5] = playerSheet.crop(playerSide * 5, playerSide, playerSide, playerSide);
-        playerRight[6] = playerSheet.crop(playerSide * 6, playerSide, playerSide, playerSide);
-        playerRight[7] = playerSheet.crop(playerSide * 7, playerSide, playerSide, playerSide);
-        playerRight[8] = playerSheet.crop(playerSide * 8, playerSide, playerSide, playerSide);
+        playerLeft = new BufferedImage[9];
+        playerLeft[0] = playerSheet.crop(0, playerSide, playerSide, playerSide);
+        playerLeft[1] = playerSheet.crop(playerSide, playerSide, playerSide, playerSide);
+        playerLeft[2] = playerSheet.crop(playerSide * 2, playerSide, playerSide, playerSide);
+        playerLeft[3] = playerSheet.crop(playerSide * 3, playerSide, playerSide, playerSide);
+        playerLeft[4] = playerSheet.crop(playerSide * 4, playerSide, playerSide, playerSide);
+        playerLeft[5] = playerSheet.crop(playerSide * 5, playerSide, playerSide, playerSide);
+        playerLeft[6] = playerSheet.crop(playerSide * 6, playerSide, playerSide, playerSide);
+        playerLeft[7] = playerSheet.crop(playerSide * 7, playerSide, playerSide, playerSide);
+        playerLeft[8] = playerSheet.crop(playerSide * 8, playerSide, playerSide, playerSide);
         playerDown = new BufferedImage[9];
         playerDown[0] = playerSheet.crop(0, playerSide * 2, playerSide, playerSide);
         playerDown[1] = playerSheet.crop(playerSide, playerSide * 2, playerSide, playerSide);
@@ -51,16 +52,16 @@ public class Asset {
         playerDown[6] = playerSheet.crop(playerSide * 6, playerSide * 2, playerSide, playerSide);
         playerDown[7] = playerSheet.crop(playerSide * 7, playerSide * 2, playerSide, playerSide);
         playerDown[8] = playerSheet.crop(playerSide * 8, playerSide * 2, playerSide, playerSide);
-        playerLeft = new BufferedImage[9];
-        playerLeft[0] = playerSheet.crop(0, playerSide * 3, playerSide, playerSide);
-        playerLeft[1] = playerSheet.crop(playerSide, playerSide * 3, playerSide, playerSide);
-        playerLeft[2] = playerSheet.crop(playerSide * 2, playerSide * 3, playerSide, playerSide);
-        playerLeft[3] = playerSheet.crop(playerSide * 3, playerSide * 3, playerSide, playerSide);
-        playerLeft[4] = playerSheet.crop(playerSide * 4, playerSide * 3, playerSide, playerSide);
-        playerLeft[5] = playerSheet.crop(playerSide * 5, playerSide * 3, playerSide, playerSide);
-        playerLeft[6] = playerSheet.crop(playerSide * 6, playerSide * 3, playerSide, playerSide);
-        playerLeft[7] = playerSheet.crop(playerSide * 7, playerSide * 3, playerSide, playerSide);
-        playerLeft[8] = playerSheet.crop(playerSide * 8, playerSide * 3, playerSide, playerSide);
+        playerRight = new BufferedImage[9];
+        playerRight[0] = playerSheet.crop(0, playerSide * 3, playerSide, playerSide);
+        playerRight[1] = playerSheet.crop(playerSide, playerSide * 3, playerSide, playerSide);
+        playerRight[2] = playerSheet.crop(playerSide * 2, playerSide * 3, playerSide, playerSide);
+        playerRight[3] = playerSheet.crop(playerSide * 3, playerSide * 3, playerSide, playerSide);
+        playerRight[4] = playerSheet.crop(playerSide * 4, playerSide * 3, playerSide, playerSide);
+        playerRight[5] = playerSheet.crop(playerSide * 5, playerSide * 3, playerSide, playerSide);
+        playerRight[6] = playerSheet.crop(playerSide * 6, playerSide * 3, playerSide, playerSide);
+        playerRight[7] = playerSheet.crop(playerSide * 7, playerSide * 3, playerSide, playerSide);
+        playerRight[8] = playerSheet.crop(playerSide * 8, playerSide * 3, playerSide, playerSide);
 
         grass = grassSheet.crop(0, grassSide * 5, grassSide, grassSide);
         rock = rockSheet.crop(0, 0, rockSide, rockSide);

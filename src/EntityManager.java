@@ -11,6 +11,7 @@ public class EntityManager {
         this.handler = handler;
         this.player = player;
         entities = new ArrayList<Entity>();
+        addEntity(player);
     }
 
     public void update(){
@@ -18,14 +19,12 @@ public class EntityManager {
             Entity entity = entities.get(i);
             entity.update();
         }
-        player.update();
     }
 
     public void render(Graphics graphics){
         for(Entity entity: entities){
             entity.render(graphics);
         }
-        player.render(graphics);
     }
 
     public void addEntity(Entity entity){
